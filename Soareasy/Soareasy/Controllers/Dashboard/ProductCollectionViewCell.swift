@@ -48,7 +48,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(priceLabel)
 
-        buyButton.setTitle("Buy", for: .normal)
+        buyButton.setTitle("Add to Cart", for: .normal)
         buyButton.backgroundColor = .systemPurple
         buyButton.setTitleColor(.white, for: .normal)
         buyButton.layer.cornerRadius = 4
