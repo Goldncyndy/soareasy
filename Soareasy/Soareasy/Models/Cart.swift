@@ -28,4 +28,21 @@ class Cart {
     func totalWithVAT() -> Double {
         return totalAmount() + vatAmount()
     }
+    
+    func getProducts() -> [Product] {
+        return products
+    }
+
+    func getTotalItems() -> Int {
+        return products.count
+    }
+}
+
+class CartManager {
+    static let shared = CartManager()
+    private var products: [Product] = []
+
+    private init() {}
+
+   
 }

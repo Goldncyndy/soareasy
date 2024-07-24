@@ -12,6 +12,10 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
     private let topView = UIView()
     private let profileImageView = UIImageView()
     private let cartIconImageView = UIImageView()
+    
+    private let cartButton = UIButton(type: .system)
+    private var cartItemCountLabel = UILabel()
+    
     private let bottomBannerView = UIView()
     private let bottomBannerImageView = UIImageView()
     private let bottomBannerLabel = UILabel()
@@ -24,6 +28,11 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         setupViews()
         setupConstraints()
         setupViewModel()
+        
+        setupCartItemCountLabel()
+                
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCartItemCount), name: .cartUpdated, object: nil)
+          
     }
     
     private func setupViewModel() {
@@ -47,6 +56,39 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         
        viewModel = ProductViewModel(products: products)
        }
+    
+        
+        private func setupCartItemCountLabel() {
+            cartItemCountLabel.textColor = .white
+            cartItemCountLabel.backgroundColor = .red
+            cartItemCountLabel.font = UIFont.systemFont(ofSize: 12, weight: .bold)
+            cartItemCountLabel.textAlignment = .center
+            cartItemCountLabel.layer.cornerRadius = 8
+            cartItemCountLabel.clipsToBounds = true
+            cartItemCountLabel.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(cartItemCountLabel)
+            
+            NSLayoutConstraint.activate([
+                cartItemCountLabel.topAnchor.constraint(equalTo: cartButton.topAnchor, constant: -8),
+                cartItemCountLabel.trailingAnchor.constraint(equalTo: cartButton.trailingAnchor, constant: 10),
+                cartItemCountLabel.widthAnchor.constraint(equalToConstant: 16),
+                cartItemCountLabel.heightAnchor.constraint(equalToConstant: 16)
+            ])
+            
+            updateCartItemCount()
+        }
+        
+        @objc private func cartButtonTapped() {
+            let cartViewController = CartViewController()
+            cartViewController.modalPresentationStyle = .fullScreen
+            present(cartViewController, animated: true, completion: nil)
+        }
+
+        @objc private func updateCartItemCount() {
+            let itemCount = Cart.shared.getTotalItems()
+            cartItemCountLabel.text = "\(itemCount)"
+            cartItemCountLabel.isHidden = itemCount == 0
+        }
 
     private func setupViews() {
         view.backgroundColor = .black
@@ -62,10 +104,12 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         profileImageView.clipsToBounds = true
         topView.addSubview(profileImageView)
 
-        // Cart Icon Image View
-        cartIconImageView.image = UIImage(systemName: "cart.fill")
-        cartIconImageView.tintColor = .white
-        topView.addSubview(cartIconImageView)
+        // Cart Icon Button Setup
+        cartButton.setImage(UIImage(systemName: "cart.fill"), for: .normal)
+        cartButton.addTarget(self, action: #selector(cartButtonTapped), for: .touchUpInside)
+        cartButton.tintColor = UIColor.white
+        cartButton.translatesAutoresizingMaskIntoConstraints = false
+        topView.addSubview(cartButton)
 
         // Bottom Banner View
         bottomBannerView.backgroundColor = .black
@@ -97,7 +141,6 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
     private func setupConstraints() {
         topView.translatesAutoresizingMaskIntoConstraints = false
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
-        cartIconImageView.translatesAutoresizingMaskIntoConstraints = false
         bottomBannerView.translatesAutoresizingMaskIntoConstraints = false
         bottomBannerImageView.translatesAutoresizingMaskIntoConstraints = false
         bottomBannerLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -117,10 +160,10 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
             profileImageView.centerYAnchor.constraint(equalTo: topView.centerYAnchor),
 
             // Cart Icon Image View Constraints
-            cartIconImageView.widthAnchor.constraint(equalToConstant: 24),
-            cartIconImageView.heightAnchor.constraint(equalToConstant: 24),
-            cartIconImageView.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -16),
-            cartIconImageView.centerYAnchor.constraint(equalTo: topView.centerYAnchor),
+            cartButton.centerYAnchor.constraint(equalTo: topView.centerYAnchor),
+            cartButton.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -16),
+            cartButton.widthAnchor.constraint(equalToConstant: 30),
+            cartButton.heightAnchor.constraint(equalToConstant: 30),
 
             // Bottom Banner View Constraints
             bottomBannerView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 2),
@@ -163,9 +206,10 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
         }
         
         cell.configure(with: product)
+        cell.delegate = self
+        
         return cell
     }
-
 
     // MARK: - UICollectionViewDelegateFlowLayout
 
@@ -189,6 +233,13 @@ extension DashboardViewController: UICollectionViewDelegate {
 //        navigationController?.pushViewController(productDetailsViewController, animated: true)
         productDetailsViewController.modalPresentationStyle = .fullScreen
         present(productDetailsViewController, animated: true, completion: nil)
+    }
+}
+
+extension DashboardViewController: ProductCollectionViewCellDelegate {
+    func productCollectionViewCell(_ cell: ProductCollectionViewCell, didTapAddToCartFor product: Product) {
+        Cart.shared.addProduct(product)
+        NotificationCenter.default.post(name: .cartUpdated, object: nil)
     }
 }
 

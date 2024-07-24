@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ProductCollectionViewCellDelegate: AnyObject {
+    func productCollectionViewCell(_ cell: ProductCollectionViewCell, didTapAddToCartFor product: Product)
+}
+
 class ProductCollectionViewCell: UICollectionViewCell {
     
     private let imageView = UIImageView()
@@ -15,6 +19,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
     private let buyButton = UIButton(type: .system)
     
     var products: Product?
+    weak var delegate: ProductCollectionViewCellDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -83,10 +88,22 @@ class ProductCollectionViewCell: UICollectionViewCell {
         imageView.image = UIImage(named: product.imageName)
         titleLabel.text = product.title
         priceLabel.text = "₦\(product.price)"
+        self.products = product
     }
     
     @objc func addToCartButtonTapped() {
-        
-    }
-}
+           guard let product = products else { return }
+           delegate?.productCollectionViewCell(self, didTapAddToCartFor: product)
+       }
+    
+//    @objc func addToCartButtonTapped() {
+//         guard let product = products else { return }
+//         Cart.shared.addProduct(product)
+//         NotificationCenter.default.post(name: .cartUpdated, object: nil)
+//     }
+ }
+
+ extension Notification.Name {
+     static let cartUpdated = Notification.Name("cartUpdated")
+ }
 

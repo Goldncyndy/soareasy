@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class CartCollectionViewCell: UICollectionViewCell {
     
     private let imageView = UIImageView()
