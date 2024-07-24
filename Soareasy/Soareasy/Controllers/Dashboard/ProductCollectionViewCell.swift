@@ -52,6 +52,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         buyButton.backgroundColor = .systemPurple
         buyButton.setTitleColor(.white, for: .normal)
         buyButton.layer.cornerRadius = 4
+        buyButton.addTarget(self, action: #selector(addToCartButtonTapped), for: .touchUpInside)
         buyButton.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(buyButton)
 
@@ -81,7 +82,11 @@ class ProductCollectionViewCell: UICollectionViewCell {
     func configure(with product: Product) {
         imageView.image = UIImage(named: product.imageName)
         titleLabel.text = product.title
-        priceLabel.text = product.price
+        priceLabel.text = "₦\(product.price)"
+    }
+    
+    @objc func addToCartButtonTapped() {
+        
     }
 }
 

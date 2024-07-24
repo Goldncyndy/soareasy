@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class ProductDetailsViewController: UIViewController {
     
     private let pageTitleLabel = UILabel()
@@ -89,6 +90,7 @@ class ProductDetailsViewController: UIViewController {
         addToCartButton.setTitleColor(.white, for: .normal)
         addToCartButton.layer.cornerRadius = 4
         addToCartButton.translatesAutoresizingMaskIntoConstraints = false
+        addToCartButton.addTarget(self, action: #selector(addToCartButtonTapped), for: .touchUpInside)
         view.addSubview(addToCartButton)
 
         setupConstraints()
@@ -144,8 +146,20 @@ class ProductDetailsViewController: UIViewController {
         guard let product = product else { return }
         imageView.image = UIImage(named: product.imageName)
         titleLabel.text = "E-book: " + product.title
-        descriptionLabel.text = product.description // Set the product description
-        priceLabel.text = product.price
-        discountedPriceLabel.text = product.discountPrice
+        descriptionLabel.text = product.description
+        priceLabel.text = "₦\(product.price)"
+        discountedPriceLabel.text = "₦\(product.discountPrice)"
+    }
+    
+    @objc func addToCartButtonTapped() {
+        guard let product = product else { return }
+        
+        // Add the product to the shared cart
+        Cart.shared.addProduct(product)
+        
+        let cartViewController = CartViewController()
+        cartViewController.modalPresentationStyle = .fullScreen
+        present(cartViewController, animated: true, completion: nil)
     }
 }
+

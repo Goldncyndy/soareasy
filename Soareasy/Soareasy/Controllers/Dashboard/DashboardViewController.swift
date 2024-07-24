@@ -29,20 +29,20 @@ class DashboardViewController: UIViewController, UICollectionViewDataSource, UIC
     private func setupViewModel() {
 
            let products = [
-            Product(imageName: "product_image", title: "Digital Entrepreneur", price: "₦4,000", description: "Digital Entrepreneur is an E-book that teaches how to to start and run a successful online business", discountPrice: "₦7,000"),
-            Product(imageName: "comeback_image", title: "Comeback Phoenix", price: "₦3,000", description: "Rise from adversity and become even better than you've ever been", discountPrice: "₦5,000"),
-            Product(imageName: "product_image1", title: "Transition To Tech", price: "₦3,500", description: "Learn Javascript from scratch even as a complete beginner. Join the tech gurus and change your life.", discountPrice: "₦5,000"),
-            Product(imageName: "product_image3", title: "How to start a Business", price: "₦4,000", description: "How to start and run a business. Become a business man/woman", discountPrice: "₦5,500"),
-            Product(imageName: "product_image4", title: "Graphics Design", price: "₦3,000", description: "Learn and master graphic design tricks and start earning instantly.", discountPrice: "₦5,500"),
-            Product(imageName: "product_image", title: "Digital Entrepreneur", price: "₦4,000", description: "This is an E-book that teaches how to to start and run a successful online business", discountPrice: "₦6,500"),
-            Product(imageName: "product_image2", title: "Comeback Phoenix", price: "₦3,000", description: "You can Rise from adversity and become even better than you've ever been", discountPrice: "₦5000"),
-            Product(imageName: "product_image1", title: "Transition To Tech", price: "₦3,500", description: "Learn Javascript from scratch even as a complete beginner. Join the tech gurus and change your life.", discountPrice: "₦5,500"),
-            Product(imageName: "product_image3", title: "How to start a Business", price: "₦4,000", description: "How to start and run a business. Become a business man/woman", discountPrice: "₦5,500"),
-            Product(imageName: "product_image4", title: "Graphics Design", price: "₦3,000", description: "Learn and master graphic design tricks and start earning instantly.", discountPrice: "₦5,700"),
-            Product(imageName: "product_image", title: "Digital Entrepreneur", price: "₦4,000", description: "An E-book that teaches how to to start and run a successful online business", discountPrice: "₦6,000"),
-            Product(imageName: "comeback_image", title: "Comeback Phoenix", price: "₦3,000", description: "Rise from adversity and become even better than you've ever been", discountPrice: "₦5,500"),
-            Product(imageName: "product_image1", title: "Transition To Tech", price: "₦3,500", description: "Learn Javascript from scratch even as a complete beginner. Join the tech gurus and change your life.", discountPrice: "₦4,000"),
-            Product(imageName: "product_image3", title: "How to start a Business", price: "₦4,000", description: "How to start and run a business. Become a business man/woman", discountPrice: "₦7,000"),
+            Product(imageName: "product_image", title: "Digital Entrepreneur", price: 4000, description: "Digital Entrepreneur is an E-book that teaches how to to start and run a successful online business", discountPrice: "₦7,000"),
+            Product(imageName: "comeback_image", title: "Comeback Phoenix", price: 3000, description: "Rise from adversity and become even better than you've ever been", discountPrice: "₦5,000"),
+            Product(imageName: "product_image1", title: "Transition To Tech", price: 3500, description: "Learn Javascript from scratch even as a complete beginner. Join the tech gurus and change your life.", discountPrice: "₦5,000"),
+            Product(imageName: "product_image3", title: "How to start a Business", price: 4000, description: "How to start and run a business. Become a business man/woman", discountPrice: "₦5,500"),
+            Product(imageName: "product_image4", title: "Graphics Design", price: 3000, description: "Learn and master graphic design tricks and start earning instantly.", discountPrice: "₦5,500"),
+            Product(imageName: "product_image", title: "Digital Entrepreneur", price: 4000, description: "This is an E-book that teaches how to to start and run a successful online business", discountPrice: "₦6,500"),
+            Product(imageName: "product_image2", title: "Comeback Phoenix", price: 3000, description: "You can Rise from adversity and become even better than you've ever been", discountPrice: "₦5000"),
+            Product(imageName: "product_image1", title: "Transition To Tech", price: 3500, description: "Learn Javascript from scratch even as a complete beginner. Join the tech gurus and change your life.", discountPrice: "₦5,500"),
+            Product(imageName: "product_image3", title: "How to start a Business", price: 4000, description: "How to start and run a business. Become a business man/woman", discountPrice: "₦5,500"),
+            Product(imageName: "product_image4", title: "Graphics Design", price: 3000, description: "Learn and master graphic design tricks and start earning instantly.", discountPrice: "₦5,700"),
+            Product(imageName: "product_image", title: "Digital Entrepreneur", price: 4000, description: "An E-book that teaches how to to start and run a successful online business", discountPrice: "₦6,000"),
+            Product(imageName: "comeback_image", title: "Comeback Phoenix", price: 3000, description: "Rise from adversity and become even better than you've ever been", discountPrice: "₦5,500"),
+            Product(imageName: "product_image1", title: "Transition To Tech", price: 3500, description: "Learn Javascript from scratch even as a complete beginner. Join the tech gurus and change your life.", discountPrice: "₦4,000"),
+            Product(imageName: "product_image3", title: "How to start a Business", price: 4000, description: "How to start and run a business. Become a business man/woman", discountPrice: "₦7,000"),
            ]
         
        viewModel = ProductViewModel(products: products)
