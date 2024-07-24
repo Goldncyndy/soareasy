@@ -8,6 +8,7 @@
 import Foundation
 
 struct Product {
+    let id: Int
     let imageName: String
     let title: String
     let price: Double

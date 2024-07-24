@@ -81,6 +81,7 @@ class ProductDetailsViewController: UIViewController {
         buyButton.backgroundColor = .systemPurple
         buyButton.setTitleColor(.white, for: .normal)
         buyButton.layer.cornerRadius = 4
+        buyButton.addTarget(self, action: #selector(buyButtonTapped), for: .touchUpInside)
         buyButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(buyButton)
         
@@ -160,6 +161,14 @@ class ProductDetailsViewController: UIViewController {
         let cartViewController = CartViewController()
         cartViewController.modalPresentationStyle = .fullScreen
         present(cartViewController, animated: true, completion: nil)
+    }
+    
+    @objc func buyButtonTapped() {
+        
+        let checkoutVC = CheckoutViewController()
+        checkoutVC.modalPresentationStyle = .fullScreen
+        present(checkoutVC, animated: true, completion: nil)
+        
     }
 }
 

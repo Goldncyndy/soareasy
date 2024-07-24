@@ -19,6 +19,7 @@ class CartViewController: UIViewController {
     private let closeButton = UIButton(type: .system)
     
     private var products: [Product] = []
+    private var viewModel: ProductViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -134,8 +135,9 @@ class CartViewController: UIViewController {
     }
     
     @objc func buyButtonTapped() {
-        let dashboardVC = DashboardViewController()
-        navigationController?.pushViewController(dashboardVC, animated: true)
+        let checkoutVC = CheckoutViewController()
+        checkoutVC.modalPresentationStyle = .fullScreen
+        present(checkoutVC, animated: true, completion: nil)
         
     }
 }
@@ -155,6 +157,7 @@ extension CartViewController: UICollectionViewDataSource, UICollectionViewDelega
         
         let product = products[indexPath.row]
         cell.configure(with: product)
+        cell.delegate = self
         return cell
     }
 
@@ -167,12 +170,14 @@ extension CartViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let product = products[indexPath.row]
+        
+        guard let product = viewModel?.product(at: indexPath.row) else { return }
         
         let productDetailsViewController = ProductDetailsViewController()
         productDetailsViewController.product = product
         
-        navigationController?.pushViewController(productDetailsViewController, animated: true)
+        productDetailsViewController.modalPresentationStyle = .fullScreen
+        present(productDetailsViewController, animated: true, completion: nil)
     }
 
     func collectionView(_ collectionView: UICollectionView, didChangeContentSize newContentSize: CGSize) {
@@ -184,4 +189,13 @@ extension CartViewController: UICollectionViewDataSource, UICollectionViewDelega
 }
 
 
-
+extension CartViewController: CartCollectionViewCellDelegate {
+    func cartCollectionViewCell(_ cell: CartCollectionViewCell, didTapRemoveFromCartFor product: Product) {
+        Cart.shared.removeProduct(product)
+        products = Cart.shared.getProducts()
+        collectionView.reloadData()
+        NotificationCenter.default.post(name: .cartUpdated, object: nil)
+    }
+    
+    
+}

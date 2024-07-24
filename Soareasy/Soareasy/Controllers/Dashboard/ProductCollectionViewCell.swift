@@ -95,15 +95,6 @@ class ProductCollectionViewCell: UICollectionViewCell {
            guard let product = products else { return }
            delegate?.productCollectionViewCell(self, didTapAddToCartFor: product)
        }
-    
-//    @objc func addToCartButtonTapped() {
-//         guard let product = products else { return }
-//         Cart.shared.addProduct(product)
-//         NotificationCenter.default.post(name: .cartUpdated, object: nil)
-//     }
  }
 
- extension Notification.Name {
-     static let cartUpdated = Notification.Name("cartUpdated")
- }
 

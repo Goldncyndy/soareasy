@@ -17,6 +17,12 @@ class Cart {
         products.append(product)
     }
     
+    func removeProduct(_ product: Product) {
+        if let index = products.firstIndex(where: { $0.id == product.id }) {
+           products.remove(at: index)
+         }
+     }
+    
     func totalAmount() -> Double {
         return products.reduce(0) { $0 + $1.price }
     }
@@ -38,11 +44,3 @@ class Cart {
     }
 }
 
-class CartManager {
-    static let shared = CartManager()
-    private var products: [Product] = []
-
-    private init() {}
-
-   
-}

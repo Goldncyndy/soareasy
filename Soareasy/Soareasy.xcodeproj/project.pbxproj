@@ -27,6 +27,8 @@
 		CEDCA5192C503D67006B3216 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDCA5182C503D67006B3216 /* CartViewController.swift */; };
 		CEDCA51D2C50428B006B3216 /* CartCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDCA51C2C50428B006B3216 /* CartCollectionViewCell.swift */; };
 		CEDCA51F2C504C31006B3216 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDCA51E2C504C31006B3216 /* Cart.swift */; };
+		CEDCA5222C51050B006B3216 /* Extension+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDCA5212C51050B006B3216 /* Extension+Notifications.swift */; };
+		CEDCA5242C510D13006B3216 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDCA5232C510D13006B3216 /* CheckoutViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		CEDCA5182C503D67006B3216 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		CEDCA51C2C50428B006B3216 /* CartCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCollectionViewCell.swift; sourceTree = "<group>"; };
 		CEDCA51E2C504C31006B3216 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		CEDCA5212C51050B006B3216 /* Extension+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Notifications.swift"; sourceTree = "<group>"; };
+		CEDCA5232C510D13006B3216 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +183,7 @@
 		CE90AD5C2C4ECF84006D895C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CEDCA5212C51050B006B3216 /* Extension+Notifications.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -284,6 +289,7 @@
 		CEDCA5202C50F81E006B3216 /* Checkout */ = {
 			isa = PBXGroup;
 			children = (
+				CEDCA5232C510D13006B3216 /* CheckoutViewController.swift */,
 			);
 			path = Checkout;
 			sourceTree = "<group>";
@@ -419,6 +425,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEDCA5222C51050B006B3216 /* Extension+Notifications.swift in Sources */,
 				CE90AD732C4FB4C7006D895C /* DashProductViewModel.swift in Sources */,
 				CE90AD2E2C4EC8CF006D895C /* OnboardingPageViewController.swift in Sources */,
 				CEDCA5172C4FF99F006B3216 /* ProductDetailsViewController.swift in Sources */,
@@ -430,6 +437,7 @@
 				CE90AD6F2C4F9DC6006D895C /* ProductCollectionViewCell.swift in Sources */,
 				CE90AD672C4ED6ED006D895C /* OnboardingContentViewController.swift in Sources */,
 				CE90AD6B2C4F2FE1006D895C /* SigninViewController.swift in Sources */,
+				CEDCA5242C510D13006B3216 /* CheckoutViewController.swift in Sources */,
 				CE90AD692C4F29C9006D895C /* SignupViewController.swift in Sources */,
 				CE90AD2A2C4EC8CF006D895C /* AppDelegate.swift in Sources */,
 				CE90AD2C2C4EC8CF006D895C /* SceneDelegate.swift in Sources */,

@@ -7,6 +7,9 @@
 
 import UIKit
 
+protocol CartCollectionViewCellDelegate: AnyObject {
+    func cartCollectionViewCell( _ cell: CartCollectionViewCell, didTapRemoveFromCartFor product: Product)
+}
 
 class CartCollectionViewCell: UICollectionViewCell {
     
@@ -16,6 +19,7 @@ class CartCollectionViewCell: UICollectionViewCell {
     private let removeButton = UIButton(type: .system)
     
     var products: Product?
+    weak var delegate: CartCollectionViewCellDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -53,6 +57,7 @@ class CartCollectionViewCell: UICollectionViewCell {
         removeButton.backgroundColor = .systemPurple
         removeButton.setTitleColor(.white, for: .normal)
         removeButton.layer.cornerRadius = 4
+        removeButton.addTarget(self, action: #selector(removeItemFromCartButtonTapped), for: .touchUpInside)
         removeButton.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(removeButton)
 
@@ -82,5 +87,11 @@ class CartCollectionViewCell: UICollectionViewCell {
         imageView.image = UIImage(named: product.imageName)
         titleLabel.text = product.title
         priceLabel.text = "₦\(product.price)"
+        self.products = product
+    }
+    
+    @objc func removeItemFromCartButtonTapped() {
+        guard let product = products else { return }
+        delegate?.cartCollectionViewCell(self, didTapRemoveFromCartFor: product)
     }
 }
