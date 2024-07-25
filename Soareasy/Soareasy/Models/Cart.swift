@@ -42,5 +42,10 @@ class Cart {
     func getTotalItems() -> Int {
         return products.count
     }
+    
+    func clearCart() {
+        products.removeAll()
+    }
 }
+
 

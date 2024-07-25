@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE4CE1A42C527D8E005183A6 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4CE1A32C527D8E005183A6 /* PaymentViewController.swift */; };
 		CE90AD2A2C4EC8CF006D895C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90AD292C4EC8CF006D895C /* AppDelegate.swift */; };
 		CE90AD2C2C4EC8CF006D895C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90AD2B2C4EC8CF006D895C /* SceneDelegate.swift */; };
 		CE90AD2E2C4EC8CF006D895C /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90AD2D2C4EC8CF006D895C /* OnboardingPageViewController.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE4CE1A32C527D8E005183A6 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		CE90AD262C4EC8CF006D895C /* Soareasy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Soareasy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE90AD292C4EC8CF006D895C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE90AD2B2C4EC8CF006D895C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE4CE1A22C527D7C005183A6 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				CE4CE1A32C527D8E005183A6 /* PaymentViewController.swift */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
 		CE90AD1D2C4EC8CF006D895C = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +201,7 @@
 		CE90AD5D2C4ECF91006D895C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CE4CE1A22C527D7C005183A6 /* Payment */,
 				CEDCA5202C50F81E006B3216 /* Checkout */,
 				CEDCA51B2C504018006B3216 /* ProductDetail */,
 				CEDCA51A2C504006006B3216 /* Cart */,
@@ -432,6 +443,7 @@
 				CEDCA51F2C504C31006B3216 /* Cart.swift in Sources */,
 				CE90AD6D2C4F3640006D895C /* DashboardViewController.swift in Sources */,
 				CEDCA5192C503D67006B3216 /* CartViewController.swift in Sources */,
+				CE4CE1A42C527D8E005183A6 /* PaymentViewController.swift in Sources */,
 				CE90AD712C4FB49F006D895C /* DashboardProductModel.swift in Sources */,
 				CEDCA51D2C50428B006B3216 /* CartCollectionViewCell.swift in Sources */,
 				CE90AD6F2C4F9DC6006D895C /* ProductCollectionViewCell.swift in Sources */,
