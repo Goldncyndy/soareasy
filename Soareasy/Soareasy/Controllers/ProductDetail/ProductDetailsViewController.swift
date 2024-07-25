@@ -13,7 +13,7 @@ class ProductDetailsViewController: UIViewController {
     private let pageTitleLabel = UILabel()
     private let imageView = UIImageView()
     private let titleLabel = UILabel()
-    private let descriptionLabel = UILabel() // New description label
+    private let descriptionLabel = UILabel() 
     private let priceLabel = UILabel()
     private let discountedPriceLabel = UILabel()
     private let buyButton = UIButton(type: .system)
